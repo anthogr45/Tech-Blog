@@ -1,0 +1,10 @@
+
+{{#each blogData}}
+{{log user}}
+  <div class="post">
+    <h2>Title : {{title}}</h2>
+    <p> Post :{{post}}</p>
+    <p>Written by: {{user.name}}</p>
+    <p>Published on: {{blogDate}}</p>
+  </div>
+{{/each}}

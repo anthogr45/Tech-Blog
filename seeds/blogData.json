@@ -1,0 +1,18 @@
+[
+    {
+      "title": "Java Script",
+      "post": "Java script is a coding language which is mostly used in web app development",
+      "blogDate": "11/11/2023",
+      "userId": 1
+      
+     
+    },
+    {
+        "title": "Node Js",
+        "post": "Node js is a backend coding language which is mostly used for server side programming",
+        "blogDate": "11/04/2023",
+        "userId": 2
+        
+      }
+  ]
+  
