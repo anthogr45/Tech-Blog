@@ -1,10 +1,16 @@
-
+{{!-- 
 {{#each blogData}}
 {{log user}}
-  <div class="post">
-    <h2>Title : {{title}}</h2>
-    <p> Post :{{post}}</p>
-    <p>Written by: {{user.name}}</p>
-    <p>Published on: {{blogDate}}</p>
+  <div>
+    <a>
+      <h2>Title : {{title}}</h2>
+      <p> Post :{{post}}</p>
+      <p>Written by: {{user.name}}</p>
+      <p>Published on: {{blogDate}}</p>
+    </a>
   </div>
+{{/each}} --}}
+
+{{#each blogData as |bData|}}
+{{> blog-details}}
 {{/each}}
