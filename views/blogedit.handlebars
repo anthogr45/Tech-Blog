@@ -1,0 +1,18 @@
+<form>
+        {{!-- {{Log blogData}} --}}
+        <label>Title:</label>
+        <input type="text" id="post-title" name="post-title" value={{blogData.title}} required>
+
+        <label >Content:</label>
+        <textarea id="post-content" name="post-content" rows="8" required>{{blogData.post}} </textarea>
+
+        {{!-- <label for="post-author">Author:</label>
+        <input type="text" id="post-author" name="post-author" value="John Doe" required>
+
+        <label for="post-date">Published on:</label>
+        <input type="date" id="post-date" name="post-date" value="2023-11-16" required> --}}
+         {{!-- <label id="blogId">Blog ID:  {{blogData.id}} </label> --}}
+         <input type="text" id="blogId" name="Blog ID" value={{blogData.id}}>
+        <button type="submit" id = "submitBtn">Save Changes</button>
+</form>
+<script src="/js/index.js"></script>

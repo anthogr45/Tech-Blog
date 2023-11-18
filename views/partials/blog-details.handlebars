@@ -9,11 +9,13 @@
 
 
   <article>
-        <h2>{{title}}</h2>
-        <p>{{post}}</p>
+       <a href="/blogedit/{{id}}">
+          <h2>{{title}}</h2>
+          <p>{{post}}</p>
 
-        <div class="auth">
+         <div class="auth">
             <span>Author: {{user.name}}</span> |
             <span>Published on: {{blogDate}}</span>
-        </div>
-    </article>
+          </div>
+        </a>
+   </article>
