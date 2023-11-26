@@ -2,33 +2,31 @@ let postTitle;
 let postContent;
 let submitBtn;
 let blogId;
+let deleteBtn;
+let saveblogBtn;
+let blogpostDate;
 
-// var myButton = document.getElementById("myButton");
+
 submitBtn = document.getElementById("submitBtn");
-
-// postTitle = document.getElementById("post-title");
-// postContent = document.getElementById("post-content");
-
-// blogId = document.getElementById("blogId");
-
-
-console.log("GOt the click");
-// Client-side code
+deleteBtn = document.getElementById("deleteBtn");
+saveblogBtn = document.getElementById("saveBtn");
 
 // Add an event listener to the form or button that triggers the save action
 
 submitBtn.addEventListener('click', saveEditedBlogPost);
+deleteBtn.addEventListener('click', deleteBlogPost);
+saveblogBtn.addEventListener('click', newBlogPost);
 
 // Event listener callback function to save the edited blog post
 function saveEditedBlogPost(event) {
   event.preventDefault();
   
-postTitle = document.getElementById('post-title').value;
-postContent = document.getElementById('post-content').value;
+  postTitle = document.getElementById('post-title').value;
+  postContent = document.getElementById('post-content').value;
 
-blogId = document.getElementById('blogId').value;
-console.log(postContent+postTitle);
-console.log(blogId);
+  blogId = document.getElementById('blogId').value;
+  console.log(postContent+postTitle);
+  console.log(blogId);
 
 
   fetch(`/blogedit/${blogId}`, {
@@ -42,11 +40,75 @@ console.log(blogId);
     .then((data) => {
       // Handle the response from the server
       console.log(data.message); 
-      console.log(this.data + "this is the data Anthony GGGGGG******************");// Display success message or handle errors
+        // Display success message or handle errors
+        document.location.replace('/');
     })
     .catch((error) => {
       console.error(error);
-      // Handle any errors that occur during the saving process
-    });
-    // console.log("GOt the click");
+      
+  });
+
+   
+}
+
+function deleteBlogPost(event) {
+  event.preventDefault();
+  
+  postTitle = document.getElementById('post-title').value;
+  postContent = document.getElementById('post-content').value;
+
+  blogId = document.getElementById('blogId').value;
+  // console.log(postContent+postTitle);
+  // console.log(blogId);
+
+
+  fetch(`/blogedit/${blogId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    
+  })
+
+  document.location.replace('/');
+     
+}
+
+function newBlogPost(event) {
+ 
+  event.preventDefault();
+
+  postTitle = document.getElementById('post-title').value;
+  postContent = document.getElementById('post-content').value;
+
+  const dateInput = generateDate();
+
+  // blogId = document.getElementById('blogId').value;
+  // console.log(postContent+postTitle);
+  // console.log(blogId);
+
+
+  fetch(`/newblogpost/`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    
+  })
+
+  document.location.replace('/');
+     
+}
+
+function generateDate () {
+
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1; // Months are zero-based, so we add 1
+  const day = currentDate.getDate();
+
+  const formattedDate = `${year}-${month}-${day}`;
+
+  return (formattedDate);
+
 }

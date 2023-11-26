@@ -1,0 +1,18 @@
+<form>
+        {{!-- {{Log blogData}} --}}
+        <label>Title:</label>
+        <input type="text" id="post-title" name="post-title" required>
+
+        <label >Content:</label>
+        <textarea id="post-content" name="post-content" rows="8" required> </textarea>
+
+        <label for="post-author">Author:</label>
+        <input type="text" id="post-author" name="post-author" required>
+
+        <label for="post-date">Published on:</label>
+        <input type="date" id="postDate" name="post-date" required>
+        <label id="useremail">{{email}}</label>
+         <input type="text" id="blogId" name="Blog ID">
+        <button type="submit" id = "saveBtn">Save</button> 
+</form>
+<script src="/js/index.js"></script>

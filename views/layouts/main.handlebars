@@ -20,10 +20,22 @@
 
     <nav>
         <a href="#">Home</a>
-        <a href="#">Dashboard</a>
-        <a href="#">Login</a>
-              
+        
+        {{#if loggedIn}}
+          <a class="btn btn-primary" id="logout">Logout</a>
+        {{else}}
+        {{!-- <a href="#" class="btn btn-primary">Log out</a> --}}
+         <a href="/login" class="btn btn-primary" >Login</a>
+        {{/if}}
+        {{#if loggedIn}}                
+           <a href="/newblogpost" id = "newblogPost" class="blog-link">Create New Blog Post</a>
+        {{else}}
+          <p>You have to Login to create a new Blog Post</p>
+        {{/if}}
     </nav>
+{{!-- 
+    <div class="blog-container"></div>
+    </div> --}}
  
     <main>
       {{{ body }}}
@@ -33,7 +45,10 @@
     <footer>
         &copy; 2023 Tech Blog. All rights reserved.
     </footer>
-
+   {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    <script src="/js/newblog.js"></script>
+   {{/if}}
 </body>
 
 </html>

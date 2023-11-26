@@ -15,7 +15,7 @@ header {
 nav {
     background-color: #444;
     color: #fff;
-    text-align: center;
+    /* text-align: center; */
     padding: 0.5em 0;
 }
 
@@ -154,3 +154,53 @@ form button:hover {
 a {
     text-decoration: none;
 }
+
+#blogId {
+    display: none;
+  }
+
+#deleteBtn {
+    background-color: #d11828;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#useremail {
+    display: none;
+}
+
+.blog-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .blog-link:hover {
+    background-color: #2980b9;
+  }
+
+  .blog-container {
+    text-align: right;
+    margin-top: 10px; 
+  }
+
+  .blog-link-disabled {
+    background-color: #ccc;
+    color: #666;
+    pointer-events: none; /* Disable mouse events */
+  }
+
+  p {
+    color: #51d630;
+    text-align: center;
+    margin-top: -18px; 
+    margin-bottom: -10px; 
+  }
