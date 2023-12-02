@@ -62,14 +62,23 @@ router.get('/blogedit/:id', /*withAuth,*/ async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  // if (req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
 
   res.render('login');
 });
 
+
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signin');
+});
 // PUT route to update a blog post
 router.put('/blogedit/:id', async (req, res) => {
   try {
@@ -165,34 +174,61 @@ router.get('/', /*withAuth,*/ async (req, res) => {
 
 
 router.get('/newblogpost', /*withAuth,*/ async (req, res) => {
+ try {
+  console.log(  req.session.email + "*****NEWBOLGPSTY************")
+  var nEmail = req.session.email;
+  console.log(  nEmail + "*****NEWBOLGPSTY************")
   
-  try {
-    const userId = req.session.user_id
-    console.log(userId);
-    // const dbblogData = await Blog.findByPk(req.params.id, {
-    //   include: [
-    //     {
-    //       model: User,
-    //       attributes: ['id','name'],
-    //     },
-    //     {
-    //       model:Comment,
-    //       attributes:['commentId','comment', 'commentDate']
-    //     }
-
-    //   ]
-    // });
-    //   const blogData = dbblogData.get({ plain: true });
-        
-
-    // res.render('blogedit', {
-    //   blogData,
-    // //   loggedIn: req.session.loggedIn,
-    // });
+    const dbblogData = await User.findOne({ where: { email:nEmail } });
+    console.log( dbblogData + "*****NEWBOLGPSTY************")
+    // const blogData = dbblogData.map((blog) => 
+    //     blog.get({plain: true})
+    //   );
+    const blogData = dbblogData.map(blog => blog.get({ plain: true }));
+      console.log( blogData + "*****NEWBOLGPSTY************")
+    
+    let authorName = blogData.name;
+    let userId = blogData.id;
+    res.render('newblog', {
+      authorName, userId,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+
+
+ 
+  
+  // try {
+  //   const userId = req.session.user_id
+  //   console.log(userId);
+  //   // const dbblogData = await Blog.findByPk(req.params.id, {
+  //   //   include: [
+  //   //     {
+  //   //       model: User,
+  //   //       attributes: ['id','name'],
+  //   //     },
+  //   //     {
+  //   //       model:Comment,
+  //   //       attributes:['commentId','comment', 'commentDate']
+  //   //     }
+
+  //   //   ]
+  //   // });
+  //   //   const blogData = dbblogData.get({ plain: true });
+        
+
+  //   // res.render('blogedit', {
+  //   //   blogData,
+  //   // //   loggedIn: req.session.loggedIn,
+  //   // });
+  // } catch (err) {
+  //   res.status(500).json(err);
+  // }
+
 
     
 

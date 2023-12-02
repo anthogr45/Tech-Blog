@@ -1,9 +1,10 @@
 // Server-side code
+
 console.log("We are here");
 
 // Import the necessary modules and models
 const express = require('express');
-const { Post } = require('../../models');
+const { Post, Blog } = require('../../models');
 
 // Create a router
 const router = express.Router();
@@ -29,6 +30,31 @@ router.put('/blogedit/:id', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+router.post('/new/', async (req, res) => {
+
+  console.log("New Blog *********************************************" + res.body)
+  try{
+    const dbUserData = await Blog.create({
+      title: req.body.postTitle,
+      post: req.body.postContent,
+      blogDate: req.body.blogpostDate,
+      userId: req.body.useridValue,
+
+    });
+    
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 
 // Export the router
 module.exports = router;

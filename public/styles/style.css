@@ -17,6 +17,8 @@ nav {
     color: #fff;
     /* text-align: center; */
     padding: 0.5em 0;
+    
+    
 }
 
 nav a {
@@ -204,3 +206,24 @@ a {
     margin-top: -18px; 
     margin-bottom: -10px; 
   }
+
+  .signin-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ce6f15;
+    color: #fff;
+    text-decoration: none;
+    border-radius: px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    float:left;
+  }
+
+  .signin-link:hover {
+    background-color: #b92978;
+  }
+
+
+  /*------------------------------------------*/
+
+  

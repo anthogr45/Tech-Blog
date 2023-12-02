@@ -5,6 +5,8 @@ let blogId;
 let deleteBtn;
 let saveblogBtn;
 let blogpostDate;
+let userName;
+
 
 
 submitBtn = document.getElementById("submitBtn");
@@ -56,6 +58,7 @@ function deleteBlogPost(event) {
   
   postTitle = document.getElementById('post-title').value;
   postContent = document.getElementById('post-content').value;
+  
 
   blogId = document.getElementById('blogId').value;
   // console.log(postContent+postTitle);
@@ -78,26 +81,32 @@ function newBlogPost(event) {
  
   event.preventDefault();
 
-  postTitle = document.getElementById('post-title').value;
-  postContent = document.getElementById('post-content').value;
+  postTitle = document.getElementById('postTitle').value;
+  postContent = document.getElementById('postContent').value;
+  userName = document.getElementById('authName').value;
+  blogpostDate = generateDate();
 
-  const dateInput = generateDate();
-
-  // blogId = document.getElementById('blogId').value;
-  // console.log(postContent+postTitle);
-  // console.log(blogId);
-
-
-  fetch(`/newblogpost/`, {
+  fetch(`api/newblogpost`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify({ postTitle, postContent,blogpostDate, userName}),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Handle the response from the server
+      console.log(data.message); 
+        // Display success message or handle errors
+        
+    })
+    .catch((error) => {
+      console.error(error);
     
   })
 
   document.location.replace('/');
-     
+      
 }
 
 function generateDate () {

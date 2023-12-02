@@ -5,6 +5,28 @@ const bcrypt = require('bcrypt');
 const { Op } = require('sequelize');
 
 
+router.post('/', async (req, res) => {
+  let dbUserData;
+  try {
+      dbUserData = await User.create({
+      name: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    });
+   
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+
+  req.session.save(() => {
+    req.session.loggedIn = true;
+    req.session.username = req.body.username;
+    req.session.email = req.body.email;
+    console.log(req.session.username + "***************************//////**************")
+    res.status(200).json(dbUserData);
+   });
+});
 
 
 
@@ -34,7 +56,8 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.userid = userData.id;
       req.session.username = userData.name;
-      req.session.loggedIin = true;
+      req.session.email = userData.email;
+      req.session.loggedIn = true;
       console.log(  req.session.user_id + "Xoxoxoxoxoxoxoxoxoxoxoxoxoxoo")
       console.log( req.session.username + "***********************////////");
       res.json({ user: userData, message: 'You are now logged in!' });

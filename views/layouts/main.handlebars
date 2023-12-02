@@ -13,9 +13,9 @@
 </head>
 
 <body>
-
+<a href="/signup" class="signin-link" >Creat a Login</a>
     <header>
-        <h1>Tech Blog</h1>
+        <h1>Tech Blog</h1>  
     </header>
 
     <nav>
@@ -30,9 +30,12 @@
         {{#if loggedIn}}                
            <a href="/newblogpost" id = "newblogPost" class="blog-link">Create New Blog Post</a>
         {{else}}
-          <p>You have to Login to create a new Blog Post</p>
+          <p>You have to Login to create a new Blog Post. If you dont have a Login : </p>
         {{/if}}
-    </nav>
+          {{!-- <a href="/login" class="signin-link" >Signup</a> --}}
+        </nav>
+        
+        
 {{!-- 
     <div class="blog-container"></div>
     </div> --}}
@@ -47,7 +50,8 @@
     </footer>
    {{#if loggedIn}}
     <script src="/js/logout.js"></script>
-    <script src="/js/newblog.js"></script>
+    
+    {{!-- <script src="/js/newblog.js"></script> --}}
    {{/if}}
 </body>
 

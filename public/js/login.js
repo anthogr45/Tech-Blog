@@ -15,7 +15,8 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      req.session.loggedIn,
+      
+      // req.session.loggedIn,
       document.location.replace('/');
 
     } else {
