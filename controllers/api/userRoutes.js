@@ -13,6 +13,7 @@ router.post('/', async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     });
+    var blogData = dbUserData.get({plain: true})
    
   } catch (err) {
     console.log(err);
@@ -21,6 +22,7 @@ router.post('/', async (req, res) => {
 
   req.session.save(() => {
     req.session.loggedIn = true;
+    req.session.userid = blogData.id;
     req.session.username = req.body.username;
     req.session.email = req.body.email;
     console.log(req.session.username + "***************************//////**************")

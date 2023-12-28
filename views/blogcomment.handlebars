@@ -1,0 +1,61 @@
+{{!-- 
+{{#each blogData as |bData|}}
+{{> blog-comment}}
+{{!-- {{#if alertMessage}} --}}
+  {{!-- {{> blog-details alertMessage}} --}}
+{{!-- {{/if}} --}}
+{{!-- {{/each}} --}} 
+
+
+<article>
+       <a href="/blogedit/{{blogsData.id}}">
+          <h2>{{blogsData.title}}</h2>
+          <p>{{blogsData.post}}</p>
+         <div class="auth">
+            <span>Author: {{blogsData.user.name}}</span> |
+            <span>Published on: {{blogsData.blogDate}}</span>
+          </div>
+        </a>
+  <h2> Comments </h2>
+  {{#each blogComment}}
+  {{!-- {{log this}} --}}
+  {{log "Comememememem212132e" }}
+  {{log "Comemememememe" this.user.name}}
+  <div>
+    <h3>{{this.user.dataValues.name}}</h3>
+    
+    <p>{{this.dataValues.comment}}</p>
+
+    
+
+  </div>
+{{/each}}
+ </article>
+ {{!-- {{log "Comemememememe" blogsData.user.name "namamam" commentData.comment }}
+         {{#each commentData}}
+         {{log "Comemememememe"  blogComment.comment}}
+         {{!-- {{> blog-comment comment=this}} --}}
+           {{!-- <h4>{{blogsData.user.name}}</h4>
+             <p>{{blogComment.comment}}</p> --}}
+         {{!-- {{/each}} --}} 
+
+
+{{!-- {{#each blogComment}}
+  {{!-- {{log this}} --}}
+  {{!-- {{log "Comememememem212132e" }}
+  {{log "Comemememememe" this.user.name}}
+  <div>
+    <h3>{{this.user.dataValues.name}}</h3>
+    
+    <p>{{this.dataValues.comment}}</p>
+
+    
+
+  </div>  --}}
+{{!-- {{/each}} --}}
+   
+
+    {{!-- <div class="comment"></div>  --}}
+         
+     {{!-- </div> --}}
+

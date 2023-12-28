@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Blog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Tech Blog</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/posts">Posts</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h2>My Tech Journey</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed nec justo vel odio eleifend pretium. Sed sit amet finibus nunc. Quisque sed vulputate lorem. Nulla facilisi. Donec id justo euismod, aliquam mauris vel, eleifend lectus. Sed euismod, justo nec vestibulum lacinia, turpis nunc aliquam turpis, ac consectetur ex urna a urna.</p>
+    </article>
+
+    <section id="comments">
+      <h3>Comments</h3>
+      <div class="comment">
+        <h4>John Doe</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed nec justo vel odio eleifend pretium.</p>
+      </div>
+      <div class="comment">
+        <h4>Jane Smith</h4>
+        <p>Quisque sed vulputate lorem. Nulla facilisi. Donec id justo euismod, aliquam mauris vel, eleifend lectus.</p>
+      </div>
+    </section>
+
+    <section id="add-comment">
+      <h3>Add a Comment</h3>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2021 Tech Blog. All rights reserved.</p>
+  </footer>
+</body>
+</html>

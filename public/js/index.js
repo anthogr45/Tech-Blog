@@ -1,4 +1,4 @@
-let postTitle;
+ let postTitle;
 let postContent;
 let submitBtn;
 let blogId;
@@ -40,20 +40,27 @@ function saveEditedBlogPost(event) {
   })
     .then((response) => response.json())
     .then((data) => {
-      // Handle the response from the server
-      console.log(data.message); 
-        // Display success message or handle errors
+      if (data.alertMessage) {
+        // Display the alert message to the user
+        console.log(data.alertMessage);
+        alert('Only the Blog Post Owner Can Edit the Post!');
+        // You can show the alert message to the user using an alert box or by updating a specific element in the DOM
+        // Example: document.getElementById('alertMessage').innerText = data.alertMessage;
+      } else {
+        console.log(data.message); // Display success message
+        // Handle the response from the server
         document.location.replace('/');
+      }
     })
     .catch((error) => {
       console.error(error);
-      
-  });
-
+      // Display the error message or handle errors
+    });
    
 }
 
 function deleteBlogPost(event) {
+  console.log("I am here dude")
   event.preventDefault();
   
   postTitle = document.getElementById('post-title').value;
@@ -61,8 +68,8 @@ function deleteBlogPost(event) {
   
 
   blogId = document.getElementById('blogId').value;
-  // console.log(postContent+postTitle);
-  // console.log(blogId);
+  console.log(postContent+postTitle);
+  console.log(blogId);
 
 
   fetch(`/blogedit/${blogId}`, {
@@ -72,8 +79,24 @@ function deleteBlogPost(event) {
     },
     
   })
-
-  document.location.replace('/');
+    // .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        // Display the alert message to the user
+       console.log(data.error);
+        alert('Only the Blog Post Owner Can Edit the Post!');
+        // You can show the alert message to the user using an alert box or by updating a specific element in the DOM
+        // Example: document.getElementById('alertMessage').innerText = data.alertMessage;
+      } else {
+        console.log(data.message); // Display success message
+        // Handle the response from the server
+        document.location.replace('/');
+      }
+  })
+  .catch((error) => {
+    console.error(error);
+    // Display the error message or handle errors
+  });
      
 }
 

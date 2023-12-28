@@ -13,4 +13,15 @@
 
 {{#each blogData as |bData|}}
 {{> blog-details}}
+{{#if alertMessage}}
+  {{> blog-details alertMessage}}
+{{/if}}
 {{/each}}
+
+
+{{!-- {{#each blogData as |bData|}}
+{{> blog-comment}}
+{{!-- {{#if alertMessage}} --}}
+  {{!-- {{> blog-details alertMessage}} --}}
+{{!-- {{/if}} --}}
+{{!-- {{/each}} --}} 

@@ -13,13 +13,18 @@
 </head>
 
 <body>
+{{#unless loggedIn}}
 <a href="/signup" class="signin-link" >Creat a Login</a>
+{{/unless}}
     <header>
         <h1>Tech Blog</h1>  
     </header>
 
     <nav>
-        <a href="#">Home</a>
+        <a href="/">Home</a>
+        {{#if loggedIn}}
+        <a href="/dashboard">Dashboard</a>
+        {{/if}}
         
         {{#if loggedIn}}
           <a class="btn btn-primary" id="logout">Logout</a>
@@ -42,7 +47,8 @@
  
     <main>
       {{{ body }}}
-     
+      {{!-- {{>blog-details}} 
+      {{>blog-comment}} --}}
     </main>
 
     <footer>

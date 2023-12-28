@@ -6,12 +6,21 @@
   <p>Author: {{user.name}}</p>
   <p>Published on: {{blogDate}}</p>
 </div> --}}
-
+{{#if alertMessage}}
+  <script>
+     alert('{{alertMessage}}');
+  </script>
+{{/if}}
 
   <article>
-       <a href="/blogedit/{{id}}">
+       <a href="/blogedetails/{{id}}">
           <h2>{{title}}</h2>
           <p>{{post}}</p>
+          {{!-- <div class="comment"></div> --}}
+           {{!-- {{#each comments}} --}}
+             {{!-- <p>{{comment}}</p> --}}
+           {{!-- {{/each}} --}}
+          {{!-- </div> --}}
 
          <div class="auth">
             <span>Author: {{user.name}}</span> |
