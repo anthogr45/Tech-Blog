@@ -58,6 +58,14 @@ h3, p {
   text-align: left;
 }
 
+.pcom {
+  line-height: 1.6;
+  color: #a31f1f;
+  /* display: inline; */
+  text-align: left;
+
+}
+
 .login-container {
     width: 300px;
     margin: 0 auto;

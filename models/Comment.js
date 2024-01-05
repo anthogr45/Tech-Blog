@@ -16,8 +16,8 @@ Comment.init(
       allowNull: false,
     },
     commentDate: {
-      type: DataTypes.DATE,
-      allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: true,
     },
    },
   {

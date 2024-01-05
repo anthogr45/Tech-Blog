@@ -7,18 +7,19 @@ let saveblogBtn;
 let blogpostDate;
 let userName;
 
-
+console.log ("Hehehe I am here babykcskcskcscsscsc111")
 
 submitBtn = document.getElementById("submitBtn");
 deleteBtn = document.getElementById("deleteBtn");
 saveblogBtn = document.getElementById("saveBtn");
+// addcomBtn = document.getElementById("commentBtn");
 
 // Add an event listener to the form or button that triggers the save action
 
 submitBtn.addEventListener('click', saveEditedBlogPost);
 deleteBtn.addEventListener('click', deleteBlogPost);
 saveblogBtn.addEventListener('click', newBlogPost);
-
+// addcomBtn.addEventListener('click', gotocomment);
 // Event listener callback function to save the edited blog post
 function saveEditedBlogPost(event) {
   event.preventDefault();
@@ -31,7 +32,7 @@ function saveEditedBlogPost(event) {
   console.log(blogId);
 
 
-  fetch(`/blogedit/${blogId}`, {
+  fetch(`/blogupdate/${blogId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -72,30 +73,31 @@ function deleteBlogPost(event) {
   console.log(blogId);
 
 
-  fetch(`/blogedit/${blogId}`, {
+  fetch(`/blogdelete/${blogId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
     
   })
-    // .then((response) => response.json())
-    .then((data) => {
-      if (data.error) {
-        // Display the alert message to the user
-       console.log(data.error);
-        alert('Only the Blog Post Owner Can Edit the Post!');
-        // You can show the alert message to the user using an alert box or by updating a specific element in the DOM
-        // Example: document.getElementById('alertMessage').innerText = data.alertMessage;
-      } else {
-        console.log(data.message); // Display success message
-        // Handle the response from the server
-        document.location.replace('/');
-      }
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.alertMessage) {
+      // Display the alert message to the user
+      console.log(data.alertMessage);
+      alert('Only the Blog Post Owner Can delete the Post!');
+      // You can show the alert message to the user using an alert box or by updating a specific element in the DOM
+      // Example: document.getElementById('alertMessage').innerText = data.alertMessage;
+    } else {
+      console.log(data.message); // Display success message
+      // Handle the response from the server
+      document.location.replace('/');
+    }
   })
   .catch((error) => {
-    console.error(error);
+    // console.error(error);
     // Display the error message or handle errors
+    document.location.replace('/');
   });
      
 }
@@ -144,3 +146,17 @@ function generateDate () {
   return (formattedDate);
 
 }
+
+// function gotocomment () {
+//   console.log ("Hehehe I am here babykcskcskcscsscsc")
+//   commentblogID = document.getElementById('comblogID').value;
+
+//   fetch(`/accesscomment/${commentblogID}`, {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     }
+//   });
+
+// }
+

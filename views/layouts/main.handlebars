@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
 {{#unless loggedIn}}
 <a href="/signup" class="signin-link" >Creat a Login</a>
 {{/unless}}
@@ -37,6 +38,7 @@
         {{else}}
           <p>You have to Login to create a new Blog Post. If you dont have a Login : </p>
         {{/if}}
+        
           {{!-- <a href="/login" class="signin-link" >Signup</a> --}}
         </nav>
         
@@ -59,6 +61,8 @@
     
     {{!-- <script src="/js/newblog.js"></script> --}}
    {{/if}}
+   <script src="/public/js/index.js"></script>
+   {{!-- <script src="/js/newcomment.js"></script> --}}
 </body>
 
 </html>
