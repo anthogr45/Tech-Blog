@@ -5,7 +5,7 @@ const { Post } = require('../models');
 const bloguserAuth = require('../utils/auth');
 const { build } = require('../models/User');
 
-
+//Home page route
 router.get('/', async (req, res) => {
   try {
     const dbblogData = await Blog.findAll({
@@ -34,6 +34,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+//Dashboard Route - Shows only blog post specific to the user
 router.get('/dashboard', async (req, res) => {
   console.log("vqvqvqvqvqvvqvqvqvqvqvqvqvqvvqvqqvqv");
   const userID = req.session.userid
@@ -66,7 +67,7 @@ router.get('/dashboard', async (req, res) => {
   }
 });
 
-
+//Blog details - shows comments 
 router.get('/blogedetails/:id', async (req, res) => {
 
   try {
@@ -106,7 +107,7 @@ router.get('/blogedetails/:id', async (req, res) => {
   }
 });
 
-
+//TO Edit an existing blog
 router.get('/blogedit/:id', async (req, res) => {
   console.log("I am Here baby xoxoxoxoxoxoxoxooxo");
   
@@ -145,6 +146,7 @@ router.get('/blogedit/:id', async (req, res) => {
   }
 });
 
+//Login 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -175,6 +177,7 @@ router.get('/accesscomment/:id', (req, res) => {
    });
 });
 
+//Commentin route
 router.post('/addcomment', async (req, res) => {
 
   try{
@@ -249,7 +252,7 @@ router.put('/blogupdate/:id'/*,bloguserAuth*/, async (req, res) => {
 });
 
 
-
+//Delete blog
 
 router.delete('/blogdelete/:id', bloguserAuth, async (req, res) => {
 
@@ -279,7 +282,7 @@ try {
   }
 
 } catch (error) {
-  console.log("Check 3333333333333333333333333333")
+  
   console.error(error);
   res.status(500).json({ error: 'Failed to delete blog post' });
 }
@@ -288,17 +291,14 @@ try {
 
 router.get('/newblogpost', async (req, res) => {
  try {
-  console.log(  req.session.email + "*****NEWBOLGPSTY************")
+  
   var nEmail = req.session.email;
-  console.log(  nEmail + "*****NEWBOLGPSTY************")
+  
   
     const dbblogData = await User.findOne({ where: { email:nEmail } });
-    console.log( dbblogData + "*****NEWBOLGPSTY************")
+   
     const blogData = dbblogData.get({plain: true})
-      
- 
-      console.log( blogData.name + "/*/*//*/NEWBOLGPSTY************")
-    
+        
     let authorName = blogData.name;
     let userId = blogData.id;
     res.render('newblog', {
