@@ -66,6 +66,6 @@ Screen layout is available in the repository path:
   
 ## Features Links
 
-- Application deployment (Heroku) URL: https://stormy-brushlands-38378-2a25ffa26458.herokuapp.com
+- Application deployment (Heroku) URL: https://fierce-ridge-25865-7ffb2efa6e88.herokuapp.com
 - Github Repository URL: https://github.com/anthogr45/Tech-Blog
   

@@ -1,13 +1,17 @@
 [
     {
       "comment": "Great Post",
-      "commentDate": "11/15/2023"
+      "commentDate": "11/15/2023",
+      "blogId": "2",
+      "userId": "1"
       
 
     },
     {
       "comment": "Thank you for the great post",
-      "commentDate": "11/14/2023"
+      "commentDate": "11/14/2023",
+      "blogId": "1",
+      "userId": "2"
      
       
     }
