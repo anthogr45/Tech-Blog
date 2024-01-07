@@ -28,7 +28,7 @@ const savecomment = async (event) => {
 
   const blogId = blogIdElement.textContent; // Use textContent to get the text inside the <p> element
   const blogpostDate  = new Date();
-  console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"+blogId);
+
 
   const response = await fetch(`/addcomment`, {
         method: 'POST',
@@ -48,21 +48,3 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
   
-
-
-
-
-// function generateDate() {
-//   const currentDate = new Date();
-//   const year = currentDate.getFullYear();
-//   const month = currentDate.getMonth() + 1; // Months are zero-based, so we add 1
-//   const day = currentDate.getDate();
-//   const formattedDate = `${month}-${day}-${year}`;
-//   return formattedDate;
-// }
-
-// document
-// .querySelector('.comment-form')
-// .addEventListener('submit', savecomment);
-
-

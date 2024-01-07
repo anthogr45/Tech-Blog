@@ -45,8 +45,7 @@ function saveEditedBlogPost(event) {
         // Display the alert message to the user
         console.log(data.alertMessage);
         alert('Only the Blog Post Owner Can Edit the Post!');
-        // You can show the alert message to the user using an alert box or by updating a specific element in the DOM
-        // Example: document.getElementById('alertMessage').innerText = data.alertMessage;
+       
       } else {
         console.log(data.message); // Display success message
         // Handle the response from the server
@@ -86,8 +85,7 @@ function deleteBlogPost(event) {
       // Display the alert message to the user
       console.log(data.alertMessage);
       alert('Only the Blog Post Owner Can delete the Post!');
-      // You can show the alert message to the user using an alert box or by updating a specific element in the DOM
-      // Example: document.getElementById('alertMessage').innerText = data.alertMessage;
+    
     } else {
       console.log(data.message); // Display success message
       // Handle the response from the server
@@ -146,17 +144,4 @@ function generateDate () {
   return (formattedDate);
 
 }
-
-// function gotocomment () {
-//   console.log ("Hehehe I am here babykcskcskcscsscsc")
-//   commentblogID = document.getElementById('comblogID').value;
-
-//   fetch(`/accesscomment/${commentblogID}`, {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     }
-//   });
-
-// }
 

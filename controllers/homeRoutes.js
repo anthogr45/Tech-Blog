@@ -6,7 +6,7 @@ const bloguserAuth = require('../utils/auth');
 const { build } = require('../models/User');
 
 
-router.get('/', /*withAuth,*/ async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const dbblogData = await Blog.findAll({
       include: [
@@ -24,8 +24,7 @@ router.get('/', /*withAuth,*/ async (req, res) => {
       const blogData = dbblogData.map((blog) =>
         blog.get({plain: true})
       );
-    
-
+     
     res.render('homepage', {
       blogData, 
       loggedIn: req.session.loggedIn,
@@ -35,7 +34,8 @@ router.get('/', /*withAuth,*/ async (req, res) => {
   }
 });
 
-router.get('/dashboard', /*withAuth,*/ async (req, res) => {
+router.get('/dashboard', async (req, res) => {
+  console.log("vqvqvqvqvqvvqvqvqvqvqvqvqvqvvqvqqvqv");
   const userID = req.session.userid
   try {
     const dbblogData = await Blog.findAll({
@@ -67,7 +67,8 @@ router.get('/dashboard', /*withAuth,*/ async (req, res) => {
 });
 
 
-router.get('/blogedetails/:id', /* withAuth */ async (req, res) => {
+router.get('/blogedetails/:id', async (req, res) => {
+
   try {
     const dbblogData = await Blog.findByPk(req.params.id, {
       include: [
@@ -94,7 +95,7 @@ router.get('/blogedetails/:id', /* withAuth */ async (req, res) => {
 
       res.render('blogcomment', {
         blogsData,
-        blogComment: commentData,
+        blogComment: commentData, 
         loggedIn: req.session.loggedIn,
       });
     } else {
@@ -106,7 +107,7 @@ router.get('/blogedetails/:id', /* withAuth */ async (req, res) => {
 });
 
 
-router.get('/blogedit/:id',/* withAuth*/ async (req, res) => {
+router.get('/blogedit/:id', async (req, res) => {
   console.log("I am Here baby xoxoxoxoxoxoxoxooxo");
   
   try {
@@ -127,35 +128,16 @@ router.get('/blogedit/:id',/* withAuth*/ async (req, res) => {
 
       if (userId === suserId) {
 
-        console.log("check 66666666666666")
-
-        res.render('blogedit', {
+         res.render('blogedit', {
          blogsData,
          loggedIn: req.session.loggedIn,
         })
       }else {
 
-        console.log("check 22222222222222222222222222222222222")
-        const userID = req.session.userid
-        const dbblogData = await Blog.findAll({
-          include: [
-            {
-              model: User,
-              attributes: ['id','name','email'],
-              where: { id: userID } 
-            },
-          ]
-        });
-        const blogData = dbblogData.map((blog) =>
-        blog.get({plain: true}),
-        );
-      console.log("check daaaaaaaaaaaaataaa"+ blogData.post)
-        // return res.status(403).send({ alertMessage: 'Only the Blog Post Owner Can Edit the Post!' });
-        res.render('Error', {
-          blogData,
+        res.render('Error',{
+          blogsData,
           loggedIn: req.session.loggedIn,
-          //  res.status(403).send({ alertMessage: 'Only the Blog Post Owner Can Edit the Post!' });
-         })
+        })
        
       }
   } catch (err) {
@@ -185,7 +167,7 @@ router.get('/signup', (req, res) => {
 router.get('/accesscomment/:id', (req, res) => {
   const userID = req.session.userid;
   const blogID = req.params.id;
-  console.log("ffffffffkkkkkkkkkllllllllllllll"+blogID);
+
   res.render('typecomment', {
     userID, blogID,
     loggedIn: req.session.loggedIn,
@@ -195,7 +177,6 @@ router.get('/accesscomment/:id', (req, res) => {
 
 router.post('/addcomment', async (req, res) => {
 
-  console.log("New coment *********************************************" +req.body.blogid + req.session.userid )
   try{
     const commentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
     const dbUserData = await Comment.create({
@@ -261,11 +242,7 @@ router.put('/blogupdate/:id'/*,bloguserAuth*/, async (req, res) => {
               res.status(500).json({ message: 'Internal server error' });
             }
         }else{
-          // alert("Only the Blog Post AUthor Can Edit or Delete the Post!");
-          
-          console.log( "***************************I am here buddy");
-          // res.send({alertMessage: 'Only the Blog Post AUthor Can Edit or Delete the Post!'})
-          // res.render('home', {alertMessage: 'Only the Blog Post AUthor Can Edit or Delete the Post!'})
+         
           return res.status(403).send({ alertMessage: 'Only the Blog Post Owner Can Edit the Post!' });
                   
         }
@@ -290,23 +267,17 @@ try {
   console.log("Check Check CHeck1" + buID+suID)
 
   if (buID === suID) {
-    console.log("Check 111111111111111111111")
     await blogPost.destroy();
     res.status({ message: 'Blog post deleted successfully' });
     res.status(204).end();
   } 
   
   else {
-    console.log("Check 22222222222222222")
-
-    res.status({ alertMessage: 'Only the Blog Post Owner Can delete the Post!' })
+     res.status({ alertMessage: 'Only the Blog Post Owner Can delete the Post!' })
 
 
   }
-    // res.status(404).json({ alertMessage: 'Only the Blog Post Owner Can delete the Post!' });
-    // res.status({ status: 'error', message: 'Resource not found', alertMessage: 'Only the Blog Post Owner Can delete the Post!' });
-    // res.status(403).send(`<script> alert('Only the Blog Post Owner Can delete the Post!');</script>`);
-    // return;
+
 } catch (error) {
   console.log("Check 3333333333333333333333333333")
   console.error(error);
@@ -315,7 +286,7 @@ try {
 });
 
 
-router.get('/newblogpost', /*withAuth,*/ async (req, res) => {
+router.get('/newblogpost', async (req, res) => {
  try {
   console.log(  req.session.email + "*****NEWBOLGPSTY************")
   var nEmail = req.session.email;
@@ -325,7 +296,7 @@ router.get('/newblogpost', /*withAuth,*/ async (req, res) => {
     console.log( dbblogData + "*****NEWBOLGPSTY************")
     const blogData = dbblogData.get({plain: true})
       
-    // const blogData = dbblogData.map(blog => blog.get({ plain: true }));
+ 
       console.log( blogData.name + "/*/*//*/NEWBOLGPSTY************")
     
     let authorName = blogData.name;
@@ -340,10 +311,4 @@ router.get('/newblogpost', /*withAuth,*/ async (req, res) => {
 });
 
 
-
-
-    
-
-
-// Export the router
 module.exports = router;

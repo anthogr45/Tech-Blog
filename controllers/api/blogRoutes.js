@@ -4,7 +4,7 @@ console.log("We are here");
 
 // Import the necessary modules and models
 const express = require('express');
-const { Post, Blog } = require('../../models');
+const { Comment, Blog, User } = require('../../models');
 
 // Create a router
 const router = express.Router();
@@ -52,6 +52,28 @@ router.post('/new/', async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+    const dbblogData = await Blog.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['id','name','email'],
+        },
+        {
+          model:Comment,
+          attributes:['commentId','comment', 'commentDate']
+        }
+
+      ]
+    });
+      const blogData = dbblogData.map((blog) =>
+        blog.get({plain: true})
+      );
+
+  res.render('homepage', {
+       blogData,
+       loggedIn: req.session.loggedIn,
+    
+   });
 });
 
 

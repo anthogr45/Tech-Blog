@@ -1,26 +1,19 @@
-{{!-- 
-{{#each blogData as |bData|}}
-{{> blog-comment}}
-{{!-- {{#if alertMessage}} --}}
-  {{!-- {{> blog-details alertMessage}} --}}
-{{!-- {{/if}} --}}
-{{!-- {{/each}} --}} 
-
 
 <article>
        <a href="/blogedit/{{blogsData.id}}">
-          <h2>{{blogsData.title}}</h2>
-          <p>{{blogsData.post}}</p>
+          
+          <h2>{{blogsData.title}} </h2> 
+          <p class = "pblog">{{blogsData.post}}</p>
           <p style="display: none;" id = "comblogID"> {{blogsData.id}}</p>
-         <div class="auth">
-            <span>Author: {{blogsData.user.name}}</span> |
-            <span>Published on: {{blogsData.blogDate}}</span>
+          <div class="auth">
+            
+          <span>Author: {{blogsData.user.name}} || </span> <span>Published on: {{blogsData.blogDate}}</span>
 
           </div>
         </a>
-  <h2> Comments </h2>
+  <h2 class ="pcomh"> Comments: </h2>
   {{#each blogComment}}
-  {{!-- {{log this}} --}}
+
   {{log "Comememememem212132e" }}
   {{log "Comemememememe" this.user.name}}
   <div style="text-align: left;">
@@ -35,7 +28,7 @@
  </article>
    <div class="form-group">
     <a href="/accesscomment/{{blogsData.id}}" id = "commentBtn" class="blog-link">Add Comment</a>
-    {{!-- <button id = "commentBtn" class="btn btn-primary">Add Comment</button> --}}
+    
     <script src="/public/js/index.js"></script>
   </div>
 

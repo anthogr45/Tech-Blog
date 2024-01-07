@@ -17,10 +17,11 @@ Blog.init(
     },
     post: {
       type: DataTypes.STRING,
+      maxlength: 1000,
       allowNull: false,
     },
     blogDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     userId: {

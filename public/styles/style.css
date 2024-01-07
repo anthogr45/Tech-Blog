@@ -65,6 +65,21 @@ h3, p {
   text-align: left;
 
 }
+.pblog {
+  line-height: 1.8;
+  color: #0b4d2c;
+  /* display: inline; */
+  text-align: left;
+
+}
+.pcomh {
+  line-height: 2.8;
+  color: #2b05d6;
+  /* display: inline; */
+  text-align: left;
+  font-family: Georgia, 'Times New Roman', Times, serif
+
+}
 
 .login-container {
     width: 300px;

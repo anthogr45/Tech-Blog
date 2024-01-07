@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
     req.session.userid = blogData.id;
     req.session.username = req.body.username;
     req.session.email = req.body.email;
-    console.log(req.session.username + "***************************//////**************")
+    
     res.status(200).json(dbUserData);
    });
 });
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
 
 
 router.post('/login', async (req, res) => {
-  console.log ("XnxnxnxnxnnxnxnnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxxXXXXXX")
+
   const { email, password } = req.body;
   console.log(email, password)
   try {
@@ -60,13 +60,10 @@ router.post('/login', async (req, res) => {
       req.session.username = userData.name;
       req.session.email = userData.email;
       req.session.loggedIn = true;
-      console.log(  req.session.user_id + "Xoxoxoxoxoxoxoxoxoxoxoxoxoxoo")
-      console.log( req.session.username + "***********************////////");
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
-     console.log( req.session.username + "***********************////////");
-
+  
   } catch (err) {
     res.status(400).json(err);
   }
@@ -76,8 +73,7 @@ router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
-      // res.redirect('/login');
-    });
+  });
   } else {
     res.status(404).end();
   }

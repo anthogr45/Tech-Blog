@@ -1,5 +1,5 @@
 <form> 
-        {{!-- {{Log blogData}}  --}}
+        
         <label>Title:</label>
         <input type="text" id="post-title" name="post-title" value={{blogsData.title}} >
 
@@ -9,10 +9,7 @@
         <label for="post-author">Author:</label>
         <input type="text" id="post-author" name="post-author" value={{blogsData.user.name}}>
 
-        {{!-- <label for="post-date">Published on:</label>
-        <input type="date" id="post-date" name="post-date" {{blogsData.blogDate}}> --}}
-         {{!-- <label id="blogId">Blog ID:  {{blogsData.id}} </label> --}}
-         <input type="text" id="blogId" name="Blog ID" value={{blogsData.id}}>
+        <input type="text" id="blogId" name="Blog ID" value={{blogsData.id}}>
         <button type="submit" id = "submitBtn">Save Changes</button> <button type="submit" id = "deleteBtn">Delete Blog</button>
 </form>
 

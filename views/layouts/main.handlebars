@@ -28,41 +28,32 @@
         {{/if}}
         
         {{#if loggedIn}}
-          <a class="btn btn-primary" id="logout">Logout</a>
+          <a href="/login" class="btn btn-primary" id="logout">Logout</a>
         {{else}}
-        {{!-- <a href="#" class="btn btn-primary">Log out</a> --}}
-         <a href="/login" class="btn btn-primary" >Login</a>
+          <a href="/login" class="btn btn-primary" >Login</a>
         {{/if}}
         {{#if loggedIn}}                
            <a href="/newblogpost" id = "newblogPost" class="blog-link">Create New Blog Post</a>
         {{else}}
-          <p>You have to Login to create a new Blog Post. If you dont have a Login : </p>
+          <p>You have to Login to create a new Blog Post. If you dont have a Login: Click on Create a Login : </p>
         {{/if}}
-        
-          {{!-- <a href="/login" class="signin-link" >Signup</a> --}}
+               
         </nav>
         
-        
-{{!-- 
-    <div class="blog-container"></div>
-    </div> --}}
- 
     <main>
       {{{ body }}}
-      {{!-- {{>blog-details}} 
-      {{>blog-comment}} --}}
+  
     </main>
 
     <footer>
-        &copy; 2023 Tech Blog. All rights reserved.
+        &copy; 2023/2024 Antho-G Tech Blog. All rights reserved.
     </footer>
    {{#if loggedIn}}
     <script src="/js/logout.js"></script>
-    
-    {{!-- <script src="/js/newblog.js"></script> --}}
+      
    {{/if}}
-   <script src="/public/js/index.js"></script>
-   {{!-- <script src="/js/newcomment.js"></script> --}}
+    <script src="/public/js/index.js"></script>
+   
 </body>
 
 </html>
