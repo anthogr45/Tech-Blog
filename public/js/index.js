@@ -1,4 +1,4 @@
- let postTitle;
+﻿ let postTitle;
 let postContent;
 let submitBtn;
 let blogId;
@@ -7,20 +7,14 @@ let saveblogBtn;
 let blogpostDate;
 let userName;
 
-console.log ("Hehehe I am here babykcskcskcscsscsc111")
 
 submitBtn = document.getElementById("submitBtn");
 deleteBtn = document.getElementById("deleteBtn");
 saveblogBtn = document.getElementById("saveBtn");
-// addcomBtn = document.getElementById("commentBtn");
-
-// Add an event listener to the form or button that triggers the save action
 
 submitBtn.addEventListener('click', saveEditedBlogPost);
 deleteBtn.addEventListener('click', deleteBlogPost);
-saveblogBtn.addEventListener('click', newBlogPost);
-// addcomBtn.addEventListener('click', gotocomment);
-// Event listener callback function to save the edited blog post
+
 function saveEditedBlogPost(event) {
   event.preventDefault();
   
@@ -136,7 +130,7 @@ function generateDate () {
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
-  const month = currentDate.getMonth() + 1; // Months are zero-based, so we add 1
+  const month = currentDate.getMonth() + 1; 
   const day = currentDate.getDate();
 
   const formattedDate = `${year}-${month}-${day}`;

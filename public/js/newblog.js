@@ -18,18 +18,15 @@ function generateDate () {
 
 function newBlogPost(event) {
 
-    console.log("New Blog -------******///////@@@@@@@@@@@$$$$$$$")
- 
+   
     event.preventDefault();
   
     const postTitle = document.getElementById("posttitle").value;
-    console.log(postTitle + "Title Value *****")
     const postContent = document.getElementById("postcontent").value;
-    console.log(postContent + "Content *****")
+    
     var userName = document.getElementById("authName");
     var authValue = userName.innerHTML;
-    console.log(authValue + "Content *****")
-
+ 
     var userID = document.getElementById("userId");
     var useridValue = userID.innerHTML;
     
@@ -57,8 +54,9 @@ function newBlogPost(event) {
         console.error(error);
       
     })
-  
+    window.location.reload();
     document.location.replace('/');
+    // window.location.reload();
         
   }
 

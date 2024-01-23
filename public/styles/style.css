@@ -244,7 +244,7 @@ a {
     border-radius: px;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    float:left;
+    float: left;
   }
 
   .signin-link:hover {
